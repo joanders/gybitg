@@ -16,6 +16,7 @@ using gybitg.Data;
 using gybitg.Models;
 using gybitg.Services;
 
+
 namespace gybitg
 {
     public class Startup
@@ -77,7 +78,8 @@ namespace gybitg
             {
                 options.Conventions.AddPageRoute("/Account/Login", "landing");
             });
-
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
